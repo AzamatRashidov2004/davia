@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { authService } from '../services/api';
+import { Link } from 'react-router-dom';
+
 
 const LoginForm: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -73,6 +75,12 @@ const LoginForm: React.FC = () => {
           >
             {loading ? 'Logging in...' : 'Sign In'}
           </button>
+        </div>
+        <div className="mt-4 text-center">
+            <span className="text-gray-600">Don't have an account? </span>
+            <Link to="/register" className="text-blue-500 hover:underline">
+                Sign up
+            </Link>
         </div>
       </form>
     </div>

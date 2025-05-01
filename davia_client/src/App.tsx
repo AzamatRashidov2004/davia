@@ -14,6 +14,7 @@ import VisualizationPage from './pages/VisualizationPage';
 import CreateVisualizationPage from './pages/CreateVisualizationPage';
 import DataSourcesPage from './pages/DataSourcesPage';
 import NotFoundPage from './pages/NotFoundPage';
+import RegisterPage from './pages/RegisterPage';
 
 // Components
 import Header from './components/layout/Header';
@@ -28,6 +29,8 @@ export const App: React.FC = () => {
           <Routes>
             {/* Public routes */}
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+
             
             {/* Protected routes */}
             <Route path="/" element={<ProtectedRoute element={<HomePage />} />} />

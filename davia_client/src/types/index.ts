@@ -2,6 +2,11 @@ export interface User {
     id: number;
     username: string;
     email: string;
+    first_name?: string;
+    last_name?: string;
+    bio?: string;
+    organization?: string;
+    profile_image?: string | null;
   }
   
   export interface DataSource {
@@ -51,4 +56,3 @@ export interface User {
     result_visualization?: number;
     created_at: string;
   }
-  

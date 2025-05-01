@@ -1,4 +1,5 @@
 from ..models import DataSource, Visualization
+from .mock_data_service import MockDataService
 
 class VisualizationService:
     """Service for creating and manipulating visualizations."""
@@ -50,39 +51,15 @@ class VisualizationService:
             raise ValueError(f"Visualization with ID {visualization_id} not found")
         
         # In a real implementation, this would fetch and process data from the data source
-        # For now, we'll return mock data based on the visualization type
+        # For now, we'll return mock data based on the visualization type and data source
+        data_source_name = visualization.data_source.name
+        
         if visualization.viz_type == 'bar':
-            return self._generate_bar_chart_data()
+            return MockDataService.get_bar_chart_data(data_source_name)
         elif visualization.viz_type == 'line':
-            return self._generate_line_chart_data()
+            return MockDataService.get_line_chart_data(data_source_name)
         elif visualization.viz_type == 'pie':
-            return self._generate_pie_chart_data()
+            return MockDataService.get_pie_chart_data(data_source_name)
         else:
-            return {'error': 'Unsupported visualization type'}
-    
-    def _generate_bar_chart_data(self):
-        """Generate mock data for a bar chart."""
-        return {
-            'labels': ['Category A', 'Category B', 'Category C', 'Category D', 'Category E'],
-            'datasets': [{
-                'data': [65, 59, 80, 81, 56]
-            }]
-        }
-    
-    def _generate_line_chart_data(self):
-        """Generate mock data for a line chart."""
-        return {
-            'labels': ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            'datasets': [{
-                'data': [65, 59, 80, 81, 56, 55, 40]
-            }]
-        }
-    
-    def _generate_pie_chart_data(self):
-        """Generate mock data for a pie chart."""
-        return {
-            'labels': ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
-            'datasets': [{
-                'data': [300, 50, 100, 40, 120]
-            }]
-        }
+            # Default to bar chart data
+            return MockDataService.get_bar_chart_data(data_source_name)

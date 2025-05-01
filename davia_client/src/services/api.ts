@@ -42,6 +42,14 @@ apiClient.interceptors.request.use(
       localStorage.setItem('token', response.data.access);
       return response.data;
     },
+    register: async (username: string, email: string, password: string) => {
+      const response = await axios.post(`${API_URL}/users/register/`, {
+        username,
+        email,
+        password
+      });
+      return response.data;
+    },
   };
   
   // Data source services
